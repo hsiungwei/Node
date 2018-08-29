@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/hsiung/stylesheets/style.css">
+    <title>編輯帳號</title>
+</head>
+<body>
+
+ <div class="box2">
+
+     <form action="/update" method="post">
+
+
+          <%data.forEach(function (item) {  %>
+
+          <input type="hidden" name="id" value=<%-item.id%>>
+         　姓名：<input type="text" name="name" value=<%-item.name%>><br>
+         　郵件：<input type="text" name="email" value=<%-item.email%>><br>
+         　電話：<input type="text" name="number" value=<%-item.number%>><br>
+         　地址：<input type="text" name="address" value=<%-item.address%>><br>
+         　<input type="submit" value= "儲   存"  style="width: 100px" />
+           <input type="button" value= "取   消 " onclick="history.back()" style="width: 100px" />
+        <% }) %>
+
+     </form>
+ </div>
+
+
+
+
+</body>
+</html>

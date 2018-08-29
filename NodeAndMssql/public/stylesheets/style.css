@@ -1,0 +1,45 @@
+
+.box {
+    height: 800px;
+    width: 600px;
+    background-color: white;
+    margin: 0px;
+    margin-top: 20px;
+}
+
+.search {
+
+    width: 100px;
+    background-color: #c9c9c9;
+    border-radius: 5px;
+
+
+
+}
+
+.creat {
+    margin-bottom: 10px;
+}
+
+.test {
+    background-color: greenyellow;
+    text-align: center;
+    width: 1200px;
+    table-layout: fixed;
+}
+
+.test2 {
+    text-align: center;
+    width: 1200px;
+    table-layout: fixed;
+    word-wrap: break-word ;
+}
+
+.box2 {
+
+    position: absolute;
+    left: 42%;
+    top:30%;
+
+
+}

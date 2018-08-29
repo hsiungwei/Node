@@ -1,0 +1,82 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="/hsiung/stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="/public/Bootstrap%20/css/bootstrap.min.css">
+<title>HsiungWei</title>
+
+
+</head>
+
+
+
+<body>
+<div class="box" >
+
+   關鍵字: <input type="text" name = 'name'>
+      <input  class="search" type="button" value="搜尋">
+    <hr color="blue">
+
+    <input class="creat" type="button" value="新增聯絡人" onclick="location.href='/add'"/>
+
+   <table class="test" border="1px" >
+
+       <tr>
+           <td>姓名</td>
+           <td>手機號碼</td>
+           <td>郵件</td>
+           <td>地址</td>
+           <td>功能</td>
+
+       </tr>
+
+       </table>
+
+
+    <table class="test2" border="1px">
+        <%data.forEach(function (item) { %>
+
+       <tr>
+           
+           <td><%-item.name%></td>
+           <td><%-item.number%></td>
+           <td><%-item.email%></td>
+           <td><%-item.address%></td>
+           <td>
+               <button type="button" onclick='location.href="/edit/<%-item.id%>"'>修改</button>
+               <button type="button" onclick='if (confirm("確認刪除?")==true){window.location.href="delete/<%-item.id%>"}' >刪除</button>
+           </td>
+
+
+       </tr>
+        <% }) %>
+
+   </table>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
