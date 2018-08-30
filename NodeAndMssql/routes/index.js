@@ -39,6 +39,7 @@ router.get('/',function (req,res) {
                 });
 
             }
+            console.log(dataRect[0].name);
         });
 
         request.on('row',function (items) {
@@ -68,7 +69,6 @@ router.get('/add',function (req,res) {
 
 //送出資料表單.
 router.post('/add',function (req,res) {
-
 
     var conncet = new Connection(sql)
 
@@ -117,8 +117,6 @@ router.post('/add',function (req,res) {
 //找到刪除的id並刪除.
 router.get('/delete/:id',function (req,res) {
 
-
-
     var connect = new Connection(sql);
 
     connect.on('connect',function (err,Count) {
@@ -131,8 +129,6 @@ router.get('/delete/:id',function (req,res) {
               deleteUser();
             };
     });
-
-
 
     function deleteUser() {
 
@@ -172,6 +168,7 @@ router.get('/edit/:id/',function (req,res) {
       var dataRect =[];
 
       function edit() {
+
           var request = new Request('SELECT * FROM phoneBOOK WHERE id=' + req.params.id,function (err,result) {
              if (err) {
                  console.log(err)
@@ -252,6 +249,55 @@ router.post('/update',function (req,res) {
     };
 
 
+});
+
+
+router.get('/search/:name',function (req,res) {
+
+    var connect = new Connection(sql);
+
+    connect.on('connect' , function (err,result) {
+        if (err){
+            console.log(err);
+        }else {
+          console.log('searchig');
+
+            searchText();
+        }
+    });
+
+    var dataRect = [];
+
+    function searchText() {
+
+
+
+        var request = new Request('SELECT * FROM phoneBOOK WHERE name Like @name', function (err) {
+            if (err) {
+                console.log(err);
+                }else {
+                res.render('search',{
+                    data:dataRect
+                });
+
+            }
+            });
+
+        request.addOutputParameter('name',TYPES.NVarChar,'%'+ req.params.name  +'%');
+
+        request.on('row',function (columns) {
+            var rowdata = {};
+            columns.forEach(function (column) {
+                rowdata[column.metadata.colName] = column.value;
+            });
+            dataRect.push(rowdata);
+        })
+
+        console.log(request);
+        console.log(dataRect);
+        connect.execSql(request);
+
+    };
 });
 
 module.exports = router;

@@ -2,8 +2,6 @@ var express = require('express');
 var app = express();
 var engine = require('ejs-locals');
 var bodyparser = require('body-parser');
-
-
 var index  = require('./routes/index');
 
 

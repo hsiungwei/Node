@@ -19,7 +19,8 @@
 
    關鍵字: <input type="text" name ='name' id="test">
 
-      <input  class="search"  type="button" value="搜尋" onclick = tessst()>
+      <input  class="search" type="button" value="搜尋" onclick= tessst()>
+      <input  class="search"  type="button" value="回列表" onclick="location.href='/'" >
 
     <hr color="blue">
 
@@ -60,31 +61,20 @@
    </table>
 
 
-
 </div>
+
 
 <script>
 
 
-       function tessst() {
+    function tessst() {
 
-           var text = document.getElementById('test');
-          var id = text.value;
-          window.location.href = "/search/"+(id);
+        var text = document.getElementById('test');
+        var id = text.value;
+        window.location.href = "/search/"+(id);
 
-       }
+    }
 </script>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
